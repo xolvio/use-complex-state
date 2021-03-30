@@ -190,3 +190,8 @@ test("multiple actions", () => {
   expect(actions.reduce(reducer, { count: 0 })).toEqual({ count: 111 });
 });
 ```
+
+## useState vs useReducer (/ use-complex-state)
+
+If you want to learn more about when to use one or the other, take a look at this blog post:
+xolv.io/dev-notes/choosing-between-use-state-and-use-reducer
