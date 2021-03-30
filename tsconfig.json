@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "declaration": true,
-    "module": "es2015",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
