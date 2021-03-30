@@ -8,9 +8,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
+      - run: yarn
+      - run: yarn build
+      - run: yarn test
       - name: Release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
