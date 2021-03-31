@@ -27,3 +27,13 @@ export const useComplexState = <
   );
   return [state, slice.actions, dispatch] as const;
 };
+
+export const prepareSliceOptions = <
+  State,
+  CaseReducers extends SliceCaseReducers<State>,
+  Name extends string = string
+  >(
+  options: Optional<CreateSliceOptions<State, CaseReducers, Name>, "name">
+) => {
+  return { name: "__name", ...options };
+};
