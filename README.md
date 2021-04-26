@@ -136,12 +136,23 @@ The differences are (compare with the use-complex-state example just above):
 ## Testing
 
 You might want to use react-testing-library, or even an browser-based tool like cypress (with react component testing) to verify the behavior of your component. If your reducers are super complex and you would like to test them without React context, you can move your slice definition out of your component:
+Note: We use a prepareSliceOptions wrapper function so you still can get the benefit of TypeScript checks and code-completion on that object. That function takes an object and returns it without any transformation, except for optionally adding a name - because createSlice used for testing will expect that. 
 
 ```typescript jsx
 import { PayloadAction } from "@reduxjs/toolkit";
-import { useComplexState } from "use-complex-state";
+import { useComplexState, prepareSliceOptions } from "use-complex-state";
 
-export const sliceOptions = {
+export const sliceOptions = prepareSliceOptions({
+  initialState: { count: 0 },
+  reducers: {
+    increment: (state) => {
+      state.count += 1;
+    },
+    incrementBy: (state, action: PayloadAction<number>) => {
+      state.count += action.payload;
+    },
+  },
+});
   initialState: { count: 0 },
   reducers: {
     increment: (state) => {
